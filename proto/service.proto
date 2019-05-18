@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+package belanjaaa;
+
+message Product {
+  string id = 1;
+  string title = 2;
+}
+
+message SearchRequest {
+  string query = 1;
+}
+
+message SearchResponse {
+  repeated Product products = 1;
+}
+
+message FindByIdRequest {
+  string id = 1;
+}
+
+message FindByIdResponse {
+  Product product = 1;
+}
+
+message AddRequest {
+  string id = 1;
+  string title = 2;
+}
+
+message AddResponse {
+  Product product = 1;
+}
+
+service ProductService {
+  rpc Add (AddRequest) returns (AddResponse) {}
+  rpc Search (SearchRequest) returns (SearchResponse) {}
+  rpc FindById (FindByIdRequest) returns (FindByIdResponse) {}
+}
