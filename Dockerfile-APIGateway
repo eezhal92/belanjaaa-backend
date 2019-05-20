@@ -1,0 +1,13 @@
+FROM golang:1.12.4 as golang
+ENV GOPATH /go
+ENV GO111MODULE=on
+RUN mkdir -p /go/src/github.com/eezhal92/belanjaaa/
+WORKDIR /go/src/github.com/eezhal92/belanjaaa/
+COPY go.mod .
+COPY . .
+RUN make build-api-gateway
+
+FROM alpine:3.6
+WORKDIR /
+COPY --from=golang /go/src/github.com/eezhal92/belanjaaa/api .
+ENTRYPOINT ["/api"]
