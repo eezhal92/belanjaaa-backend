@@ -9,5 +9,6 @@ RUN make build-product-service
 
 FROM alpine:3.6
 WORKDIR /
+RUN apk update && apk add bash
 COPY --from=golang /go/src/github.com/eezhal92/belanjaaa/product .
 ENTRYPOINT ["/product"]

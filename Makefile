@@ -10,3 +10,7 @@ build-api-gateway:
 docker:
 	docker build -t eezhal92/product-service -f Dockerfile-Product .
 	docker build -t eezhal92/api-gateway -f Dockerfile-APIGateway .
+
+deploy:
+	kubectl create -f k8s/product.yaml
+	kubectl create -f k8s/api.yaml

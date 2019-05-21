@@ -27,7 +27,7 @@ func main() {
 
 // Create New instance of GRPC Client for product service
 func NewProductService() pb.ProductServiceClient {
-	serverAddr := ":8080"
+	serverAddr := "product:8080"
 	conn, err := grpc.Dial(serverAddr, grpc.WithInsecure())
 
 	if err != nil {
